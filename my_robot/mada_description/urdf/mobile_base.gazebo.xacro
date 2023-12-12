@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mada">
+
+
+  <gazebo reference="base_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+  
+  <gazebo reference="neck_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+  
+  <gazebo reference="head_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+  
+  <gazebo reference="base">
+    <material>Gazebo/Black</material>
+  </gazebo>
+ 
+  <gazebo reference="right_front_wheel">
+    <material>Gazebo/Black</material>
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+  </gazebo>
+  
+  <gazebo reference="left_front_wheel">
+    <material>Gazebo/Yellow</material>
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+  </gazebo>
+  
+  <gazebo reference="right_back_wheel">
+    <material>Gazebo/Green</material>
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+  </gazebo>
+  
+  <gazebo reference="left_back_wheel">
+    <material>Gazebo/Orange</material>
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+  </gazebo>
+  
+
+  <gazebo>
+  <plugin name="gazebo_ros_diff_drive" filename="libgazebo_ros_diff_drive.so">
+
+      <!-- Update rate in Hz -->
+      <update_rate>50</update_rate>
+
+      <!-- wheels -->
+      <left_joint>left_front_wheel_joint</left_joint>
+      <right_joint>right_front_wheel_joint</right_joint>
+
+      <!-- kinematics -->
+      <wheel_separation>0.4</wheel_separation>
+      <wheel_diameter>0.1</wheel_diameter>
+
+      <!-- limits -->
+      <max_wheel_torque>10</max_wheel_torque>
+      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+
+      <!-- input -->
+      <command_topic>cmd_vel</command_topic>            
+
+      <!-- output -->
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>true</publish_wheel_tf>
+
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+  </plugin>
+  
+  </gazebo>
+</robot>
+

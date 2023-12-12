@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="arm_mada">
+
+  <joint name="arm_standalone_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="arm_link"/>
+    <origin rpy="3.14159 3.14159 0" xyz="0 -0.35 0.3"/>
+  </joint>
+  
+</robot>
